@@ -8,5 +8,4 @@ truffle migrate
 
 truffle console
 
-// 임의의 값으로 truffle 환경에서 구동..
 BeApp.deployed().then(function(f) {f.addUser('20','a@a.a','a','0').then (function(f) {console.log(f)})})
