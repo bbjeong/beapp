@@ -3,3 +3,7 @@
 
 ERC20 토큰 발행 참고
 https://github.com/OpenZeppelin/openzeppelin-solidity
+
+truffle migrate
+truffle console
+BeApp.deployed().then(function(f) {f.addUser('20','a@a.a','a','0').then (function(f) {console.log(f)})})
