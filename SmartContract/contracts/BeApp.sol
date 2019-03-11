@@ -5,7 +5,8 @@ contract BeApp {
     uint public userIndex;
     
     mapping(address => mapping(uint => User)) userInfo;
-    mapping(uint => address) userIdInAccount;
+    mapping(string => uint) userEmailToId;
+    mapping(uint => address) userIdToInfo;
     
     struct User {
         uint id;
@@ -16,7 +17,7 @@ contract BeApp {
         address account;
     }
     
-		event NewUser(uint _userId, uint _age, string _email, string _ipfsValue, bool _gender, address _account);
+    event NewUser(uint _userId, uint _age, string _email, string _ipfsValue, bool _gender, address _account);
 
     constructor() public {
         userIndex = 0;
@@ -26,12 +27,14 @@ contract BeApp {
         userIndex += 1;
         User memory user = User(userIndex, _age, _email, _ipfsValue, _gender, msg.sender);
         userInfo[msg.sender][userIndex] = user;
-        userIdInAccount[userIndex] = msg.sender;
-				emit NewUser(userIndex, _age, _email, _ipfsValue, _gender, msg.sender);
+        userEmailToId[_email] = userIndex;
+        userIdToInfo[userIndex] = msg.sender;
+	emit NewUser(userIndex, _age, _email, _ipfsValue, _gender, msg.sender);
     }
     
-    function getUser(uint _userId) public returns (uint, uint, string memory, string memory, bool, address) {
-        User memory user = userInfo[userIdInAccount[_userId]][_userId];
+    function getUser(string memory _userEmail) public view returns (uint, uint, string memory, string memory, bool, address) {
+        User memory user = userInfo[userIdToInfo[userEmailToId[_userEmail]]][userEmailToId[_userEmail]];
+        // User memory user = userInfo[userIdInAccount[_userId]][_userId];
         return (user.id, user.age, user.email, user.ipfsValue, user.gender, user.account);
     }
 }
