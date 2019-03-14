@@ -1,6 +1,8 @@
 pragma solidity >=0.5.0;
 
-contract BeApp {
+import "./SimpleToken.sol";
+
+contract BeApp is SimpleToken {
     
     uint public userIndex;
     
@@ -29,6 +31,7 @@ contract BeApp {
         userInfo[msg.sender][userIndex] = user;
         userEmailToId[_email] = userIndex;
         userIdToInfo[userIndex] = msg.sender;
+        balancesUser[msg.sender] = 0;
 	emit NewUser(userIndex, _age, _email, _ipfsValue, _gender, msg.sender);
     }
     
