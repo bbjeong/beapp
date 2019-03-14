@@ -1,8 +1,8 @@
 pragma solidity >=0.5.0;
 
-import "./SimpleToken.sol";
+import "./SimpleToken123.sol";
 
-contract BeApp is SimpleToken {
+contract BeApp is SimpleToken123 {
     
     uint public userIndex;
     
