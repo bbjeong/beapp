@@ -12,7 +12,7 @@ import "openzeppelin-solidity/contracts/token/ERC20/ERC20Detailed.sol";
  */
  contract BET is ERC20, ERC20Detailed {
     uint8 public constant DECIMALS = 18;
-    uint256 public constant INITIAL_SUPPLY = 100000 * (10 ** uint256(DECIMALS));
+    uint256 public constant INITIAL_SUPPLY = 500000 * (10 ** uint256(DECIMALS));
     address owner;
     
     mapping(address => uint) public balancesUser;
