@@ -15,3 +15,9 @@ truffle console
 BeApp.deployed().then(function(f) {f.addUser('20','a@a.a','a','0').then (function(f) {console.log(f)})})
 
 BeApp.deployed().then(function(f) {f.getUser('a@a.a').then (function(f) {console.log(f)})})
+
+유저 등록, 설문조사 응답 내용 저장, 유저 정보 불러오기, 유저 응답 내용 불러오기
+
+BET 토큰 생성까지 진행
+
+여러명이 동시에 설문조사를 진행해도 설문조사를 진행하는 msg.sender(address)에 따라 응답 내용이 저장됩니다!
