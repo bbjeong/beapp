@@ -73,10 +73,10 @@ contract BeApp is BET {
         uint _answer5, uint _answer6, uint _answer7, uint _answer8, uint _answer9, uint _answer10, uint _answer11) public {
         Answer memory answer = Answer(_answer1, _answer2, _answer3, _answer4, _answer5, _answer6, _answer7, _answer8, _answer9, _answer10, _answer11);
         User memory user = userInfo[msg.sender][userAddressToId[msg.sender]];
-        answerValue[userIndex] = answer;
+        answerValue[user.id] = answer;
         user.amountBET = _amountBET;
         user.ipfsValue = _ipfsValue;
-        userInfo[msg.sender][userIndex] = user;
+        userInfo[msg.sender][user.id] = user;
         transfer(msg.sender, user.amountBET);
         emit NewUser(user.id, user.age, user.amountBET, user.email, user.ipfsValue, user.gender, msg.sender);
         emit NewAnswer(_amountBET, _answer1, _answer2, _answer3, _answer4, _answer5, _answer6, _answer7, _answer8, _answer9, _answer10, _answer11);
